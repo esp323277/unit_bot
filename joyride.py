@@ -13,7 +13,7 @@ def adjust_speed(delta):
     # Adjust the speed
     speed += delta
     # Clamp the speed to stay within 0.05 and 1
-    speed = max(min(speed, 1), 0.05)
+    speed = round(max(min(speed, 1), 0.05), 2)
     print(f"Speed adjusted to {speed}")
 
 # Button mapping
