@@ -36,7 +36,7 @@ pygame.init()
 pygame.joystick.init()
 
 # Initialise Unit robot
-bot = motor.Robot()
+bot = unit_motor.Robot()
 
 # Check for joysticks
 joystick_count = pygame.joystick.get_count()
