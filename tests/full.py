@@ -1,57 +1,40 @@
 import time
 import unit_motor
 
-bot = unit_motor.Robot()
-
+# Constants
 RUN_TIME = 1
 SLEEP_TIME = 1
 SPEED = 0.1
 
-print("forward")
-bot.forward(SPEED, RUN_TIME)
-time.sleep(SLEEP_TIME)
+# Initialize robot
+bot = unit_motor.Robot()
 
-print("backward")
-bot.backward(SPEED, RUN_TIME)
-time.sleep(SLEEP_TIME)
+def perform_action(action, speed, run_time, sleep_time):
+    """Perform a bot action and sleep for a specified time."""
+    action(speed, run_time)
+    time.sleep(sleep_time)
 
-print("spin left")
-bot.left(SPEED, RUN_TIME)
-time.sleep(SLEEP_TIME)
+def main():
+    """Main function to control the bot."""
+    actions = [
+        ("forward", bot.forward, SPEED),
+        ("backward", bot.backward, SPEED),
+        ("spin left", bot.left, SPEED),
+        ("spin right", bot.right, SPEED),
+        ("steer forward full left", bot.steer, SPEED, -1),
+        ("steer forward full right", bot.steer, SPEED, 1),
+        ("steer forward half left", bot.steer, SPEED, -0.5),
+        ("steer forward half right", bot.steer, SPEED, 0.5),
+        ("steer backward full left", bot.steer, -SPEED, -1),
+        ("steer backward full right", bot.steer, -SPEED, 1),
+        ("steer backward half left", bot.steer, -SPEED, -0.5),
+        ("steer backward half right", bot.steer, -SPEED, 0.5),
+    ]
 
-print("spin right")
-bot.right(SPEED, RUN_TIME)
-time.sleep(SLEEP_TIME)
+    for description, action, *params in actions:
+        print(description)
+        perform_action(lambda speed, run_time: action(*params), SPEED, RUN_TIME, SLEEP_TIME)
 
-print("steer forward full left")
-bot.steer(SPEED, -1, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer forward full right")
-bot.steer(SPEED, 1, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer forward half left")
-bot.steer(SPEED, -0.5, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer forward half right")
-bot.steer(SPEED, 0.5, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer backward full left")
-bot.steer(-SPEED, -1, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer backward full right")
-bot.steer(-SPEED, 1, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer backward half left")
-bot.steer(-SPEED, -0.5, RUN_TIME)
-time.sleep(SLEEP_TIME)
-
-print("steer backward half right")
-bot.steer(-SPEED, 0.5, RUN_TIME)
-time.sleep(SLEEP_TIME)
+if __name__ == "__main__":
+    main()
 
