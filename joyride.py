@@ -12,7 +12,7 @@ def adjust_speed(delta):
         global speed
         if -1 < speed < 1:
             speed += delta
-            speed = max(min(speed, 1), -1)  # Ensure speed stays within bounds
+            speed = max(min(speed, -1), 1)  # Ensure speed stays within bounds
             print(f"Speed adjusted to {speed}")
         else:
             print("Speed is already at its limit")
@@ -67,16 +67,20 @@ else:
             # Button pressed
             elif event.type == pygame.JOYBUTTONDOWN:
                 button = event.button
-                print(f"Button {button} pressed")
+                #print(f"Button {button} pressed")
                 
                 # Bot movement
                 if button == buttons["forward"]:
+                    print("Forward")
                     bot.forward(speed)
                 elif button == buttons["backward"]:
+                    print("Backward")
                     bot.backward(speed)
                 elif button == buttons["left_turn"]:
+                    print("Left turn")
                     bot.left(speed)
                 elif button == buttons["right_turn"]:
+                    print("Right turn")
                     bot.right(speed)
                 
                 # Speed adjustment
@@ -97,6 +101,7 @@ else:
                 # Stop bot movement
                 if button in (buttons["forward"], buttons["backward"], \
                               buttons["left_turn"], buttons["right_turn"]):
+                    print("Stoping")
                     bot.stop()
     
     # Quit Pygame
