@@ -1,5 +1,5 @@
 import time
-from .. import unit_motor
+import unit_motor
 
 # Constants
 RUN_TIME = 1
