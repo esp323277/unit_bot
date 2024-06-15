@@ -1,4 +1,4 @@
-import unit_motor
+from .. import unit_motor
 
 bot = unit_motor.Robot()
 

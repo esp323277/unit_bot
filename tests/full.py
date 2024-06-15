@@ -1,10 +1,10 @@
 import time
-import unit_motor
+from .. import unit_motor
 
 # Constants
 RUN_TIME = 1
 SLEEP_TIME = 1
-SPEED = 0.1
+SPEED = 0.5
 
 # Initialize robot
 bot = unit_motor.Robot()
