@@ -5,18 +5,16 @@ import pygame
 # 1. Add logic for unit_motor steering
 
 # Starting at 10% power
-speed = 0.1
+speed = 0.05
 
 
 def adjust_speed(delta):
-        global speed
-        if -1 < speed < 1:
-            speed += delta
-            speed = max(min(speed, -1), 1)  # Ensure speed stays within bounds
-            print(f"Speed adjusted to {speed}")
-        else:
-            print("Speed is already at its limit")
-
+    global speed
+    # Adjust the speed
+    speed += delta
+    # Clamp the speed to stay within 0.05 and 1
+    speed = max(min(speed, 1), 0.05)
+    print(f"Speed adjusted to {speed}")
 
 # Button mapping
 buttons = {
@@ -85,9 +83,9 @@ else:
                 
                 # Speed adjustment
                 elif button == buttons["speed_up"]:
-                    adjust_speed(0.1)
+                    adjust_speed(0.05)
                 elif button == buttons["speed_down"]:
-                    adjust_speed(-0.1)
+                    adjust_speed(-0.05)
                 
                 # Exit
                 elif button == buttons["exit"]:
@@ -96,7 +94,7 @@ else:
             # Button released
             elif event.type == pygame.JOYBUTTONUP:
                 button = event.button
-                print(f"Button {button} released")
+                #print(f"Button {button} released")
 
                 # Stop bot movement
                 if button in (buttons["forward"], buttons["backward"], \
