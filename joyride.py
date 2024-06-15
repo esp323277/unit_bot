@@ -1,4 +1,4 @@
-from unit import motor
+import unit_motor
 import pygame
 
 # TODO 
