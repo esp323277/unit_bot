@@ -11,14 +11,14 @@ sudo apt install \
     libevdev-dev \
     python3-venv \
     python3-pip \
-    cmake \
+    cmake -y
 
 # Load required kernel modules 
 sudo modprobe uinput hid_nintendo i2c-dev
 # Then add them to startup
 sudo sh -c "cat >>/etc/modules" <<-EOF
     i2c-dev
-    unput
+    uinput
     hid_nintendo
 EOF
 
@@ -28,6 +28,7 @@ cd ~/git
 
 # Add joycond support
 git clone https://github.com/DanielOgorchock/joycond.git
+cd joycond
 cmake .
 sudo make install
 sudo systemctl enable --now joycond
@@ -46,11 +47,3 @@ deactivate
 # Reboot
 echo "System will reboot in 5 seconds. Press CTRL-C to cancel"
 sleep 10; sudo reboot
-
-
-
-
-
-
-
-

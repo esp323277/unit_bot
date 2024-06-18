@@ -4,7 +4,7 @@ import pygame
 # TODO 
 # 1. Add logic for unit_motor steering
 
-# Starting at 10% power
+# Starting at 5% power
 speed = 0.05
 
 
@@ -13,7 +13,9 @@ def adjust_speed(delta):
     # Adjust the speed
     speed += delta
     # Clamp the speed to stay within 0.05 and 1
-    speed = round(max(min(speed, 1), 0.05), 2)
+    speed = max(min(speed, 1), 0.05)
+    # Round it off
+    speed = round(speed, 2)
     print(f"Speed adjusted to {speed}")
 
 # Button mapping
