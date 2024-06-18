@@ -2,7 +2,7 @@ import unit_motor
 
 bot = unit_motor.Robot()
 
-RUN_TIME = 5
+RUN_TIME = 1
 SPEED = 1
 
 print("forward")
