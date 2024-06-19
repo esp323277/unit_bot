@@ -21,10 +21,10 @@ def adjust_speed(delta):
 # Button mapping
 buttons = {
     "exit": 10,
-    "forward": 1,
+    "forward": 2,
     "backward": 0,
     "left_turn": 3,
-    "right_turn": 2,
+    "right_turn": 1,
     "speed_up": 14,
     "speed_down": 15,
 }
